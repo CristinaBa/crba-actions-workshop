@@ -41,6 +41,13 @@ jobs:
       packages: write
     steps: 
       - uses: actions/checkout@v3
+      
+      - name: Define Output
+        id: test
+        run: echo 'val=test_output' >> $GITHUB_OUTPUT
+        
+      - name: Access Output
+        run: echo ${{ steps.test.outputs.day }}
     
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
